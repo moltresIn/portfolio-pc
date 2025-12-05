@@ -33,7 +33,7 @@ const Taskbar = ({ windows, onWindowClick, onStartClick }) => {
           <div className="start-menu">
             <div className="start-menu-header">
               <div className="start-menu-title">PORTFOLIO OS 98</div>
-              <div className="start-menu-subtitle">Alex Carter</div>
+              <div className="start-menu-subtitle">Kishor Arjunan</div>
             </div>
             <div className="start-menu-items">
               <div className="start-menu-item" onClick={() => { onStartClick(); setStartMenuOpen(false); }}>About Me</div>

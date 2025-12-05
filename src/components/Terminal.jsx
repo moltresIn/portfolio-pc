@@ -4,7 +4,7 @@ import './Terminal.css';
 const Terminal = ({ onCommand }) => {
   const [history, setHistory] = useState([
     { type: 'output', text: 'Portfolio OS [Version 2.1.98]' },
-    { type: 'output', text: '(c) 2025 Alex Carter. All rights reserved.' },
+    { type: 'output', text: '(c) 2025 Kishor Arjunan All rights reserved.' },
     { type: 'output', text: '' },
     { type: 'output', text: 'Type "help" for available commands.' },
     { type: 'output', text: '' }
@@ -29,7 +29,7 @@ const Terminal = ({ onCommand }) => {
       case 'help':
         output = [
           'Available commands:',
-          '  about      - View information about Alex Carter',
+          '  about      - View information about Kishor Arjunan',
           '  projects   - Browse project portfolio',
           '  skills     - Display technical skills',
           '  contact    - Get contact information',

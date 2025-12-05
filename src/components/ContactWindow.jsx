@@ -26,8 +26,8 @@ const ContactWindow = () => {
   };
 
   const contactInfo = [
-    { icon: '📧', label: 'Email', value: 'alex.carter.dev@example.com' },
-    { icon: '👨‍💻', label: 'GitHub', value: 'github.com/alexcarter-dev' }
+    { icon: '📧', label: 'Email', value: 'akishor2001@gmail.com' },
+    { icon: '👨‍💻', label: 'GitHub', value: 'github.com/moltresIn' }
   ];
 
   return (

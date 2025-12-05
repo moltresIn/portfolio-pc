@@ -7,7 +7,7 @@ const AboutWindow = () => {
       <div className="about-header">
         <div className="about-avatar">👨‍💻</div>
         <div className="about-title">
-          <h1>Alex Carter</h1>
+          <h1>Kishor Arjunan</h1>
           <h2>Full Stack Developer</h2>
         </div>
       </div>

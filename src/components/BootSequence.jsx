@@ -36,7 +36,7 @@ const BootSequence = () => {
       {stage === 0 && (
         <div className="bios-screen">
           <div className="bios-text">
-            <div>ALEX CARTER BIOS v2.1</div>
+            <div>KISHOR ARJUNAN BIOS v2.1</div>
             <div>Copyright (C) 2025, Portfolio Systems Inc.</div>
             <div style={{ marginTop: '20px' }}>Detecting hardware...</div>
             <div>CPU: Full Stack Developer Core</div>
