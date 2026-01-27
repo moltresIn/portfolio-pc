@@ -4,27 +4,50 @@ import './SkillsWindow.css';
 const SkillsWindow = () => {
   const skills = [
     {
-      category: 'Languages & Frameworks',
+      category: 'Frontend',
       items: [
-        { name: 'JavaScript & TypeScript', level: 95 },
-        { name: 'React & Node.js', level: 90 },
-        { name: 'HTML & CSS', level: 95 }
+        { name: 'React & React Native', level: 95 },
+        { name: 'Hooks & Redux/Zustand', level: 90 },
+        { name: 'Tailwind CSS', level: 90 },
+        { name: 'UI/UX Optimization', level: 85 }
       ]
     },
     {
-      category: 'UI/UX Design',
+      category: 'Backend',
       items: [
-        { name: 'Responsive Design', level: 90 },
-        { name: 'User Interface Design', level: 85 },
-        { name: 'Prototyping', level: 80 }
+        { name: 'Node.js & Express.js', level: 90 },
+        { name: 'REST APIs', level: 90 },
+        { name: 'Authentication', level: 85 }
       ]
     },
     {
-      category: 'Tools & Technologies',
+      category: 'Database',
       items: [
-        { name: 'Git & Version Control', level: 90 },
-        { name: 'Docker & CI/CD', level: 75 },
-        { name: 'AWS & Cloud Services', level: 70 }
+        { name: 'MongoDB', level: 85 },
+        { name: 'MySQL', level: 85 }
+      ]
+    },
+    {
+      category: 'Real-Time',
+      items: [
+        { name: 'WebSockets (Socket.io)', level: 85 },
+        { name: 'Server-Sent Events', level: 80 }
+      ]
+    },
+    {
+      category: 'DevOps & Cloud',
+      items: [
+        { name: 'Docker & Kubernetes', level: 80 },
+        { name: 'CI/CD & Nginx', level: 80 },
+        { name: 'Cloud-Agnostic Deployments', level: 75 }
+      ]
+    },
+    {
+      category: 'Architecture',
+      items: [
+        { name: 'Modular/Micro-Frontends', level: 85 },
+        { name: 'Serverless', level: 75 },
+        { name: 'Clean Code Principles', level: 90 }
       ]
     }
   ];
@@ -72,7 +95,7 @@ const SkillsWindow = () => {
         <div className="skills-footer">
           <pre>{`
 ----------------------------------------------------
-Last Updated: 2025 | Status: Continuously Learning
+Last Updated: 2026 | Status: Continuously Learning
 ----------------------------------------------------
           `}</pre>
         </div>
