@@ -37,9 +37,9 @@ const BootSequence = () => {
         <div className="bios-screen">
           <div className="bios-text">
             <div>KISHOR ARJUNAN BIOS v2.1</div>
-            <div>Copyright (C) 2025, Portfolio Systems Inc.</div>
+            <div>Copyright (C) 2026, Portfolio Systems Inc.</div>
             <div style={{ marginTop: '20px' }}>Detecting hardware...</div>
-            <div>CPU: Full Stack Developer Core</div>
+            <div>CPU: Software Engineer Core</div>
             <div>RAM: Unlimited Creativity</div>
             <div>GPU: High Performance UI/UX Engine</div>
           </div>

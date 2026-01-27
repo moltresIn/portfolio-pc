@@ -7,31 +7,65 @@ const ProjectsWindow = () => {
   const projects = [
     {
       id: 1,
-      name: 'RetroTunes Player',
-      icon: '🎵',
-      description: 'A browser-based audio player styled like a 90s media console',
-      tech: ['JavaScript', 'Web Audio API', 'CSS3'],
+      name: 'AI People Detection System',
+      icon: '🤖',
+      description: 'An AI-driven real-time people detection system with live analytics dashboard',
+      tech: ['React', 'Node.js', 'Python', 'TensorFlow', 'WebSockets', 'Computer Vision'],
       features: [
-        'Retro Winamp-inspired interface',
-        'Playlist management',
-        'Visualizer with multiple themes',
-        'Keyboard shortcuts'
+        'Real-time video processing and detection',
+        'Live analytics dashboard with React frontend',
+        'Optimized backend for high-performance inference',
+        'WebSocket integration for instant updates',
+        'Scalable architecture for multiple camera feeds'
       ],
       status: 'Completed'
     },
     {
       id: 2,
-      name: 'PixelBoard',
-      icon: '🎨',
-      description: 'A collaborative pixel-art drawing tool with real-time sockets',
-      tech: ['React', 'Node.js', 'Socket.io', 'Canvas API'],
+      name: 'Social Media Platform',
+      icon: '📱',
+      description: 'A full-featured social media platform supporting 5,000+ active users',
+      tech: ['React Native', 'Node.js', 'Express.js', 'MySQL', 'Redis', 'JWT'],
       features: [
-        'Real-time collaborative drawing',
-        'Multiple brush sizes and colors',
-        'Export to PNG/GIF',
-        'Room-based sessions'
+        'Cross-platform mobile app (iOS & Android)',
+        'API response time improved by ~40%',
+        'Secure authentication and authorization',
+        'Real-time notifications and updates',
+        'Scalable database architecture',
+        'Image upload and processing pipeline'
       ],
-      status: 'In Progress'
+      status: 'Completed'
+    },
+    {
+      id: 3,
+      name: 'Micro-Frontend Architecture',
+      icon: '🏗️',
+      description: 'Implemented modular frontend architecture for improved scalability',
+      tech: ['React', 'Module Federation', 'Webpack', 'Docker', 'Kubernetes', 'CI/CD'],
+      features: [
+        'Independent feature development and deployment',
+        'Shared component library across micro-apps',
+        'Improved build times and team productivity',
+        'Isolated testing environments',
+        'Zero-downtime deployments'
+      ],
+      status: 'Completed'
+    },
+    {
+      id: 4,
+      name: 'Real-Time Messaging System',
+      icon: '💬',
+      description: 'Secure real-time messaging platform with end-to-end encryption',
+      tech: ['Node.js', 'Socket.io', 'MongoDB', 'Redis', 'JWT', 'Encryption'],
+      features: [
+        'Real-time bidirectional communication',
+        'Message encryption and secure authentication',
+        'Typing indicators and read receipts',
+        'File sharing capabilities',
+        'Scalable message queue system',
+        'Production-ready deployment'
+      ],
+      status: 'Completed'
     }
   ];
 

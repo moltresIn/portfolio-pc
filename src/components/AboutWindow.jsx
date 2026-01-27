@@ -8,35 +8,48 @@ const AboutWindow = () => {
         <div className="about-avatar">👨‍💻</div>
         <div className="about-title">
           <h1>Kishor Arjunan</h1>
-          <h2>Full Stack Developer</h2>
+          <h2>Full-Stack Software Developer</h2>
         </div>
       </div>
 
       <div className="about-section">
         <h3>Bio</h3>
         <p>
-          Passionate full-stack developer with expertise in building modern web applications.
-          I specialize in creating seamless user experiences backed by robust server architecture.
-          Always exploring new technologies and pushing the boundaries of what's possible on the web.
+          Full-stack software developer with experience building scalable, real-time web applications 
+          and owning features end-to-end. Strong in React, Node.js, Express, and MongoDB/MySQL, with a 
+          focus on performance, clean architecture, and production deployments across multiple cloud platforms.
         </p>
       </div>
 
       <div className="about-section">
-        <h3>Expertise</h3>
+        <h3>Contact</h3>
         <ul className="expertise-list">
-          <li>Frontend: React, TypeScript, Modern CSS</li>
-          <li>Backend: Node.js, Express, API Design</li>
-          <li>Database: MongoDB, PostgreSQL, Redis</li>
-          <li>Tools: Git, Docker, AWS, CI/CD</li>
+          <li>💻 <a href="https://github.com/moltresIn" target="_blank" rel="noopener noreferrer">github.com/moltresIn</a></li>
+          <li>📧 <a href="mailto:kishor@aracreate.group">kishor@aracreate.group</a></li>
+          <li>🔗 <a href="https://linkedin.com/in/kishor-arjunan" target="_blank" rel="noopener noreferrer">linkedin.com/in/kishor-arjunan</a></li>
         </ul>
       </div>
 
       <div className="about-section">
-        <h3>Philosophy</h3>
-        <p>
-          I believe in writing clean, maintainable code and creating products that users love.
-          Every line of code should serve a purpose, and every feature should solve a real problem.
-        </p>
+        <h3>Core Skills</h3>
+        <ul className="expertise-list">
+          <li>Frontend: React, React Native, Hooks, Redux/Zustand, Tailwind, UI/UX optimization</li>
+          <li>Backend: Node.js, Express.js, REST APIs, Authentication</li>
+          <li>Database: MongoDB, MySQL</li>
+          <li>Real-Time: WebSockets (Socket.io), Server-Sent Events</li>
+          <li>DevOps & Cloud: Docker, Kubernetes, CI/CD, Nginx, cloud-agnostic deployments</li>
+          <li>Architecture: Modular/Micro-Frontends, Serverless, Clean Code principles</li>
+        </ul>
+      </div>
+
+      <div className="about-section">
+        <h3>Key Experience & Achievements</h3>
+        <ul className="expertise-list">
+          <li>Built an AI-driven real-time people detection system with a React frontend and optimized backend, delivering live analytics</li>
+          <li>Developed a social media platform (React Native, Node.js, MySQL) supporting 5,000+ users, improving API response times by ~40%</li>
+          <li>Implemented micro-frontend architecture to improve scalability and independent feature development</li>
+          <li>Designed real-time messaging and secure authentication systems for production environments</li>
+        </ul>
       </div>
 
       <div className="about-footer">
