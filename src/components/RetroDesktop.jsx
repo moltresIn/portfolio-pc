@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import BootSequence from './BootSequence';
-import Desktop from './Desktop';
-import Taskbar from './Taskbar';
-import Window from './Window';
-import Terminal from './Terminal';
-import AboutWindow from './AboutWindow';
-import ProjectsWindow from './ProjectsWindow';
-import SkillsWindow from './SkillsWindow';
-import ContactWindow from './ContactWindow';
+import Desktop from './desktop/Desktop';
+import Taskbar from './taskbar/Taskbar';
+import Window from './window/Window';
+import Terminal from './windows/Terminal';
+import AboutWindow from './windows/AboutWindow';
+import ProjectsWindow from './windows/ProjectsWindow';
+import SkillsWindow from './windows/SkillsWindow';
+import ContactWindow from './windows/ContactWindow';
 import './RetroDesktop.css';
 
 const RetroDesktop = () => {

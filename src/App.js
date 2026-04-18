@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RetroDesktop from './components/RetroDesktop';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   return (
