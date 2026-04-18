@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SkillsWindow.css';
 
 const SkillsWindow = () => {
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setAnimated(true), 100);
+    return () => clearTimeout(t);
+  }, []);
   const skills = [
     {
       category: 'Frontend',
@@ -83,7 +89,10 @@ const SkillsWindow = () => {
               <div key={sidx} className="skill-item">
                 <div className="skill-name">{skill.name}</div>
                 <div className="skill-bar-container">
-                  <div className="skill-bar" style={{ width: `${skill.level}%` }}>
+                  <div
+                    className="skill-bar"
+                    style={{ width: animated ? `${skill.level}%` : '0%' }}
+                  >
                     <span className="skill-percentage">{skill.level}%</span>
                   </div>
                 </div>

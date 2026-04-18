@@ -9,51 +9,51 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(217, 70, 239, 0.1) 100%);
-  border: 2px solid #808080;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
+  border: 2px solid #7aaabf;
   border-radius: 4px;
   margin-bottom: 20px;
 }
 
 .about-avatar {
   font-size: 64px;
-  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
 }
 
 .about-title h1 {
   margin: 0;
   font-family: 'Press Start 2P', monospace;
-  font-size: 24px;
-  color: #000;
-  text-shadow: 2px 2px 0 rgba(168, 85, 247, 0.3);
+  font-size: 20px;
+  color: #001a33;
+  text-shadow: 1px 1px 0 rgba(0, 212, 255, 0.2);
 }
 
 .about-title h2 {
   margin: 8px 0 0 0;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  color: #333;
+  color: #004488;
 }
 
 .about-section {
   margin-bottom: 20px;
   padding: 16px;
-  border: 2px inset #808080;
-  background: rgba(255, 255, 255, 0.8);
+  border: 2px inset #7aaabf;
+  background: rgba(240, 248, 255, 0.9);
 }
 
 .about-section h3 {
   margin: 0 0 12px 0;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  color: #000080;
+  color: #003366;
   text-decoration: underline;
 }
 
 .about-section p {
   margin: 0;
   line-height: 1.6;
-  color: #000;
+  color: #001a33;
 }
 
 .expertise-list {
@@ -64,7 +64,8 @@
 
 .expertise-list li {
   padding: 8px 0;
-  border-bottom: 1px dotted #808080;
+  border-bottom: 1px dotted #7aaabf;
+  color: #001a33;
 }
 
 .expertise-list li:last-child {
@@ -79,8 +80,8 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 12px;
-  background: #c0c0c0;
-  border: 2px inset #fff;
+  background: #c8dce8;
+  border: 2px inset #e0f0ff;
   font-size: 18px;
-  color: #000;
+  color: #001a33;
 }

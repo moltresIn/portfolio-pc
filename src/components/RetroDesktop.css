@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  background: linear-gradient(135deg, #1a0033 0%, #2d0052 50%, #1a0033 100%);
+  background: linear-gradient(135deg, #000a1a 0%, #001433 50%, #000a1a 100%);
   overflow: hidden;
 }
 
@@ -14,8 +14,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  background: 
-    radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.25) 100%);
   animation: crt-flicker 0.15s infinite alternate;
 }
 
@@ -29,8 +28,8 @@
   z-index: 9998;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.15) 0px,
-    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.12) 0px,
+    rgba(0, 0, 0, 0.12) 1px,
     transparent 1px,
     transparent 2px
   );

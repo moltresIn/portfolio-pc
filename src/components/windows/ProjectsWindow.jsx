@@ -18,7 +18,9 @@ const ProjectsWindow = () => {
         'WebSocket integration for instant updates',
         'Scalable architecture for multiple camera feeds'
       ],
-      status: 'Completed'
+      status: 'Completed',
+      github: 'https://github.com/moltresIn',
+      live: null,
     },
     {
       id: 2,
@@ -34,7 +36,9 @@ const ProjectsWindow = () => {
         'Scalable database architecture',
         'Image upload and processing pipeline'
       ],
-      status: 'Completed'
+      status: 'Completed',
+      github: 'https://github.com/moltresIn',
+      live: null,
     },
     {
       id: 3,
@@ -49,7 +53,9 @@ const ProjectsWindow = () => {
         'Isolated testing environments',
         'Zero-downtime deployments'
       ],
-      status: 'Completed'
+      status: 'Completed',
+      github: 'https://github.com/moltresIn',
+      live: null,
     },
     {
       id: 4,
@@ -65,7 +71,9 @@ const ProjectsWindow = () => {
         'Scalable message queue system',
         'Production-ready deployment'
       ],
-      status: 'Completed'
+      status: 'Completed',
+      github: 'https://github.com/moltresIn',
+      live: null,
     }
   ];
 
@@ -119,6 +127,19 @@ const ProjectsWindow = () => {
                   <li key={idx}>{feature}</li>
                 ))}
               </ul>
+            </div>
+
+            <div className="project-links">
+              {selectedProject.github && (
+                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="project-link github-link">
+                  👨‍💻 View on GitHub
+                </a>
+              )}
+              {selectedProject.live && (
+                <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="project-link live-link">
+                  🌐 Live Demo
+                </a>
+              )}
             </div>
           </div>
         ) : (

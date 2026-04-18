@@ -1,13 +1,49 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Terminal.css';
 
+const NEOFETCH = [
+  '        ██████╗  ██████╗ ',
+  '       ██╔═══██╗██╔════╝ ',
+  '       ██║   ██║╚█████╗  ',
+  '       ██║   ██║ ╚═══██╗ ',
+  '       ╚██████╔╝██████╔╝ ',
+  '        ╚═════╝ ╚═════╝  ',
+  '',
+  '  kishor@portfolio-os',
+  '  ─────────────────────────',
+  '  OS:       Portfolio OS 98',
+  '  Role:     Senior Software Engineer',
+  '  Company:  Aracreate India',
+  '  Location: Erode, Tamil Nadu, India',
+  '  Stack:    React · Node.js · Docker · K8s',
+  '  Shell:    cmd.exe v2.1.98',
+  '  Website:  https://akishor.com',
+];
+
+const HELP_TEXT = [
+  'Available commands:',
+  '',
+  '  about      - Open About window',
+  '  projects   - Open Projects window',
+  '  skills     - Open Skills window',
+  '  contact    - Open Contact window',
+  '  open <app> - Open any app by name',
+  '  whoami     - Display current user info',
+  '  neofetch   - System information',
+  '  date       - Show current date & time',
+  '  echo <msg> - Print a message',
+  '  ls / dir   - List available programs',
+  '  clear/cls  - Clear terminal screen',
+  '  help       - Show this help message',
+];
+
 const Terminal = ({ onCommand }) => {
   const [history, setHistory] = useState([
     { type: 'output', text: 'Portfolio OS [Version 2.1.98]' },
-    { type: 'output', text: '(c) 2026 Kishor Arjunan All rights reserved.' },
+    { type: 'output', text: '(c) 2026 Kishor Arjunan. All rights reserved.' },
     { type: 'output', text: '' },
     { type: 'output', text: 'Type "help" for available commands.' },
-    { type: 'output', text: '' }
+    { type: 'output', text: '' },
   ]);
   const [input, setInput] = useState('');
   const [commandHistory, setCommandHistory] = useState([]);
@@ -21,90 +57,140 @@ const Terminal = ({ onCommand }) => {
     }
   }, [history]);
 
+  const push = (...lines) =>
+    lines.map(text => ({ type: 'output', text }));
+
   const handleCommand = (cmd) => {
-    const command = cmd.trim().toLowerCase();
+    const trimmed = cmd.trim();
+    const lower = trimmed.toLowerCase();
+    const parts = lower.split(' ');
     let output = [];
 
-    switch(command) {
+    switch (parts[0]) {
       case 'help':
-        output = [
-          'Available commands:',
-          '  about      - View information about Kishor Arjunan',
-          '  projects   - Browse project portfolio',
-          '  skills     - Display technical skills',
-          '  contact    - Get contact information',
-          '  ls         - List available programs',
-          '  cd         - Change directory (simulated)',
-          '  clear      - Clear terminal screen',
-          '  help       - Show this help message'
-        ];
+        output = push(...HELP_TEXT);
         break;
+
+      case 'whoami':
+        output = push(
+          'User:     Kishor Arjunan',
+          'Role:     Senior Software Engineer',
+          'Company:  Aracreate India',
+          'Location: Erode, Tamil Nadu, India',
+          'Email:    akishor2001@gmail.com',
+          'GitHub:   github.com/moltresIn',
+          'LinkedIn: linkedin.com/in/kishor-arjunan',
+        );
+        break;
+
+      case 'neofetch':
+        output = push(...NEOFETCH);
+        break;
+
+      case 'date':
+        output = push(new Date().toString());
+        break;
+
+      case 'echo':
+        output = push(trimmed.slice(5) || '');
+        break;
+
       case 'about':
-        output = ['Opening About.exe...'];
+        output = push('Opening About.exe...');
         onCommand('about');
         break;
+
       case 'projects':
-        output = ['Opening Projects folder...'];
+        output = push('Opening Projects folder...');
         onCommand('projects');
         break;
+
       case 'skills':
-        output = ['Opening Skills.txt...'];
+        output = push('Opening Skills.txt...');
         onCommand('skills');
         break;
+
       case 'contact':
-        output = ['Opening Contact.app...'];
+        output = push('Opening Contact.app...');
         onCommand('contact');
         break;
+
+      case 'open': {
+        const app = parts[1];
+        const valid = ['about', 'projects', 'skills', 'contact', 'terminal'];
+        if (valid.includes(app)) {
+          output = push(`Opening ${app}...`);
+          onCommand(app);
+        } else {
+          output = push(
+            app
+              ? `'${app}' is not a recognized program.`
+              : 'Usage: open <about|projects|skills|contact|terminal>',
+          );
+        }
+        break;
+      }
+
       case 'ls':
       case 'dir':
-        output = [
+        output = push(
           'Directory of C:\\PORTFOLIO',
           '',
           '  About.exe',
-          '  Projects <DIR>',
+          '  Projects    <DIR>',
           '  Skills.txt',
           '  Contact.app',
           '  Terminal.exe',
           '',
-          '5 File(s)     42,069 bytes'
-        ];
+          '5 File(s)     42,069 bytes',
+        );
         break;
-      case 'cd ..':
+
       case 'cd':
-        output = ['C:\\PORTFOLIO>'];
+        output = push('C:\\PORTFOLIO>');
         break;
+
       case 'clear':
       case 'cls':
         setHistory([]);
         return;
+
       case '':
+        output = [];
         break;
+
       default:
-        output = [`'${cmd}' is not recognized as an internal or external command.`, 'Type "help" for available commands.'];
+        output = push(
+          `'${trimmed}' is not recognized as an internal or external command.`,
+          'Type "help" for available commands.',
+        );
     }
 
     setHistory(prev => [
       ...prev,
-      { type: 'input', text: cmd },
-      ...output.map(text => ({ type: 'output', text }))
+      { type: 'input', text: trimmed },
+      ...output,
     ]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.trim()) {
-      setCommandHistory(prev => [...prev, input]);
-      setHistoryIndex(-1);
-      handleCommand(input);
+    if (!input.trim() && input !== '') {
+      setHistory(prev => [...prev, { type: 'input', text: '' }]);
       setInput('');
+      return;
     }
+    setCommandHistory(prev => [...prev, input]);
+    setHistoryIndex(-1);
+    handleCommand(input);
+    setInput('');
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (commandHistory.length > 0) {
-        const newIndex = historyIndex < commandHistory.length - 1 ? historyIndex + 1 : historyIndex;
+        const newIndex = Math.min(historyIndex + 1, commandHistory.length - 1);
         setHistoryIndex(newIndex);
         setInput(commandHistory[commandHistory.length - 1 - newIndex]);
       }
@@ -126,13 +212,13 @@ const Terminal = ({ onCommand }) => {
       <div className="terminal-output">
         {history.map((line, index) => (
           <div key={index} className={`terminal-line ${line.type}`}>
-            {line.type === 'input' && <span className="prompt">C:\PORTFOLIO&gt; </span>}
+            {line.type === 'input' && <span className="prompt">C:\PORTFOLIO&gt;&nbsp;</span>}
             {line.text}
           </div>
         ))}
       </div>
       <form onSubmit={handleSubmit} className="terminal-input-form">
-        <span className="prompt">C:\PORTFOLIO&gt; </span>
+        <span className="prompt">C:\PORTFOLIO&gt;&nbsp;</span>
         <input
           ref={inputRef}
           type="text"
@@ -142,6 +228,7 @@ const Terminal = ({ onCommand }) => {
           className="terminal-input"
           autoFocus
           spellCheck={false}
+          autoComplete="off"
         />
       </form>
     </div>

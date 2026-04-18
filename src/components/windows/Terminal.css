@@ -1,6 +1,6 @@
 .terminal {
-  background: #1a1a1a;
-  color: #d946ef;
+  background: #000d1a;
+  color: #00d4ff;
   font-family: 'Courier New', monospace;
   font-size: 18px;
   padding: 16px;
@@ -8,7 +8,7 @@
   overflow-y: auto;
   cursor: text;
   line-height: 1.6;
-  text-shadow: 0 0 8px rgba(217, 70, 239, 0.5);
+  text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
 .terminal-output {
@@ -22,17 +22,17 @@
 }
 
 .terminal-line.input {
-  color: #fff;
+  color: #e8f4ff;
 }
 
 .terminal-line.output {
-  color: #d946ef;
+  color: #00d4ff;
 }
 
 .prompt {
-  color: #a855f7;
+  color: #0088ff;
   font-weight: bold;
-  text-shadow: 0 0 10px #a855f7;
+  text-shadow: 0 0 8px #0088ff;
 }
 
 .terminal-input-form {
@@ -45,25 +45,25 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: #e8f4ff;
   font-family: 'Courier New', monospace;
   font-size: 18px;
   padding: 0;
   margin: 0;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 6px rgba(232, 244, 255, 0.4);
 }
 
 .terminal::-webkit-scrollbar {
   width: 12px;
-  background: #000;
+  background: #000d1a;
 }
 
 .terminal::-webkit-scrollbar-thumb {
-  background: #a855f7;
-  border: 2px solid #000;
-  box-shadow: 0 0 10px #a855f7;
+  background: #0055aa;
+  border: 2px solid #000d1a;
+  box-shadow: 0 0 8px #00d4ff;
 }
 
 .terminal::-webkit-scrollbar-thumb:hover {
-  background: #d946ef;
+  background: #0088cc;
 }
