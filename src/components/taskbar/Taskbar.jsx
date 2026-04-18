@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Taskbar.css';
 
-const Taskbar = ({ windows, onWindowClick, onStartClick }) => {
+const Taskbar = ({ windows, onWindowClick, onStartClick, onOpenApp }) => {
   const [time, setTime] = useState(new Date());
   const [startMenuOpen, setStartMenuOpen] = useState(false);
 
@@ -36,9 +36,16 @@ const Taskbar = ({ windows, onWindowClick, onStartClick }) => {
               <div className="start-menu-subtitle">Kishor Arjunan</div>
             </div>
             <div className="start-menu-items">
-              <div className="start-menu-item" onClick={() => { onStartClick(); setStartMenuOpen(false); }}>About Me</div>
+              <div className="start-menu-item" onClick={() => { onStartClick(); setStartMenuOpen(false); }}>👤 About Me</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('projects'); setStartMenuOpen(false); }}>📁 Projects</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('skills'); setStartMenuOpen(false); }}>📄 Skills</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('contact'); setStartMenuOpen(false); }}>📧 Contact</div>
               <div className="start-menu-separator"></div>
-              <div className="start-menu-item" onClick={() => setStartMenuOpen(false)}>Close Menu</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('terminal'); setStartMenuOpen(false); }}>💻 Terminal</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('notepad'); setStartMenuOpen(false); }}>📝 Notepad</div>
+              <div className="start-menu-item" onClick={() => { onOpenApp('snake'); setStartMenuOpen(false); }}>🐍 Snake</div>
+              <div className="start-menu-separator"></div>
+              <div className="start-menu-item" onClick={() => setStartMenuOpen(false)}>✖ Close Menu</div>
             </div>
           </div>
         )}

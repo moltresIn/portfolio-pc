@@ -1,0 +1,72 @@
+.snake-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background: #000d1a;
+  padding: 12px;
+  gap: 10px;
+}
+
+.snake-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: #00d4ff;
+  text-shadow: 0 0 8px #00d4ff;
+}
+
+.snake-canvas-wrap {
+  position: relative;
+  border: 2px solid #0055aa;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.3);
+  line-height: 0;
+}
+
+.snake-canvas {
+  display: block;
+}
+
+.snake-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 13, 26, 0.82);
+  gap: 12px;
+}
+
+.snake-msg {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: #00d4ff;
+  text-shadow: 0 0 20px #00d4ff;
+}
+
+.snake-score {
+  font-family: 'VT323', monospace;
+  font-size: 28px;
+  color: #fff;
+}
+
+.snake-sub {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: #5aaabf;
+  animation: blink 1s infinite;
+}
+
+.snake-footer {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: #2a5a7a;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}

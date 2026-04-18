@@ -8,146 +8,136 @@ import AboutWindow from './windows/AboutWindow';
 import ProjectsWindow from './windows/ProjectsWindow';
 import SkillsWindow from './windows/SkillsWindow';
 import ContactWindow from './windows/ContactWindow';
+import SnakeGame from './windows/SnakeGame';
+import Notepad from './windows/Notepad';
 import './RetroDesktop.css';
+
+const WALLPAPERS = [
+  { label: 'Default',  value: '/assets/bg.jpg' },
+  { label: 'Navy',     value: null, color: '#001433' },
+  { label: 'Midnight', value: null, color: '#0a0a1a' },
+  { label: 'Teal',     value: null, color: '#002233' },
+];
+
+const WINDOW_CONFIG = {
+  about:    { title: 'About.exe',                      width: 600, height: 420 },
+  projects: { title: 'Projects',                       width: 700, height: 500 },
+  skills:   { title: 'Skills.txt - Notepad',           width: 500, height: 420 },
+  contact:  { title: 'Contact.app',                    width: 500, height: 460 },
+  terminal: { title: 'C:\\WINDOWS\\System32\\cmd.exe', width: 700, height: 450 },
+  snake:    { title: 'Snake.exe',                      width: 480, height: 420 },
+  notepad:  { title: 'Notepad.exe',                    width: 520, height: 400 },
+};
 
 const RetroDesktop = () => {
   const [booting, setBooting] = useState(true);
   const [windows, setWindows] = useState([]);
   const [nextZIndex, setNextZIndex] = useState(100);
+  const [wallpaper, setWallpaper] = useState(WALLPAPERS[0]);
 
   useEffect(() => {
-    const bootTimer = setTimeout(() => {
-      setBooting(false);
-    }, 4000);
-    return () => clearTimeout(bootTimer);
+    const t = setTimeout(() => setBooting(false), 4000);
+    return () => clearTimeout(t);
   }, []);
 
   const openWindow = (type) => {
-    const existingWindow = windows.find(w => w.type === type);
-    if (existingWindow) {
-      bringToFront(existingWindow.id);
-      return;
-    }
-
-    const windowConfig = {
-      about: { title: 'About.exe', width: 600, height: 400 },
-      projects: { title: 'Projects', width: 700, height: 500 },
-      skills: { title: 'Skills.txt - Notepad', width: 500, height: 400 },
-      contact: { title: 'Contact.app', width: 500, height: 450 },
-      terminal: { title: 'C:\\WINDOWS\\System32\\cmd.exe', width: 700, height: 450 }
-    };
-
-    const config = windowConfig[type];
-    const newWindow = {
-      id: Date.now(),
-      type,
-      title: config.title,
-      x: 100 + windows.length * 30,
-      y: 80 + windows.length * 30,
-      width: config.width,
-      height: config.height,
-      minimized: false,
-      zIndex: nextZIndex
-    };
-
-    setWindows([...windows, newWindow]);
-    setNextZIndex(nextZIndex + 1);
+    const existing = windows.find(w => w.type === type);
+    if (existing) { bringToFront(existing.id); return; }
+    const cfg = WINDOW_CONFIG[type];
+    if (!cfg) return;
+    setWindows(prev => [...prev, {
+      id: Date.now(), type,
+      title: cfg.title,
+      x: 100 + prev.length * 30,
+      y: 80  + prev.length * 30,
+      width: cfg.width, height: cfg.height,
+      minimized: false, zIndex: nextZIndex,
+    }]);
+    setNextZIndex(z => z + 1);
   };
 
-  const closeWindow = (id) => {
-    setWindows(windows.filter(w => w.id !== id));
-  };
-
-  const minimizeWindow = (id) => {
-    setWindows(windows.map(w => 
-      w.id === id ? { ...w, minimized: true } : w
-    ));
-  };
+  const closeWindow    = (id) => setWindows(w => w.filter(x => x.id !== id));
+  const minimizeWindow = (id) => setWindows(w => w.map(x => x.id === id ? { ...x, minimized: true } : x));
 
   const restoreWindow = (id) => {
-    const window = windows.find(w => w.id === id);
-    if (window) {
-      setWindows(windows.map(w => 
-        w.id === id ? { ...w, minimized: false, zIndex: nextZIndex } : w
-      ));
-      setNextZIndex(nextZIndex + 1);
-    }
+    setWindows(w => w.map(x => x.id === id ? { ...x, minimized: false, zIndex: nextZIndex } : x));
+    setNextZIndex(z => z + 1);
   };
 
   const bringToFront = (id) => {
-    setWindows(windows.map(w => 
-      w.id === id ? { ...w, zIndex: nextZIndex } : w
-    ));
-    setNextZIndex(nextZIndex + 1);
+    setWindows(w => w.map(x => x.id === id ? { ...x, zIndex: nextZIndex } : x));
+    setNextZIndex(z => z + 1);
   };
 
-  const updateWindowPosition = (id, x, y) => {
-    setWindows(windows.map(w => 
-      w.id === id ? { ...w, x, y } : w
-    ));
+  const updateWindowPosition = (id, x, y) =>
+    setWindows(w => w.map(x2 => x2.id === id ? { ...x2, x, y } : x2));
+
+  const handleTerminalCommand = (cmd) => {
+    const c = cmd.toLowerCase().trim();
+    if (WINDOW_CONFIG[c]) openWindow(c);
   };
 
-  const renderWindowContent = (type) => {
-    switch(type) {
-      case 'about':
-        return <AboutWindow />;
-      case 'projects':
-        return <ProjectsWindow />;
-      case 'skills':
-        return <SkillsWindow />;
-      case 'contact':
-        return <ContactWindow />;
-      case 'terminal':
-        return <Terminal onCommand={(cmd) => handleTerminalCommand(cmd)} />;
-      default:
-        return <div>Unknown window type</div>;
+  const renderContent = (type) => {
+    switch (type) {
+      case 'about':    return <AboutWindow />;
+      case 'projects': return <ProjectsWindow />;
+      case 'skills':   return <SkillsWindow />;
+      case 'contact':  return <ContactWindow />;
+      case 'terminal': return <Terminal onCommand={handleTerminalCommand} />;
+      case 'snake':    return <SnakeGame />;
+      case 'notepad':  return <Notepad />;
+      default:         return null;
     }
   };
 
-  const handleTerminalCommand = (command) => {
-    const cmd = command.toLowerCase().trim();
-    if (cmd === 'about') openWindow('about');
-    else if (cmd === 'projects') openWindow('projects');
-    else if (cmd === 'skills') openWindow('skills');
-    else if (cmd === 'contact') openWindow('contact');
-  };
+  const bgStyle = wallpaper.value
+    ? { backgroundImage: `url(${wallpaper.value})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+    : { background: wallpaper.color };
 
-  if (booting) {
-    return <BootSequence />;
-  }
+  if (booting) return <BootSequence />;
 
   return (
-    <div className="retro-desktop-container">
+    <div className="retro-desktop-container" style={bgStyle}>
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <filter id="grain-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" result="noise" />
+          <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+          <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" />
+        </filter>
+      </svg>
       <div className="crt-effect" />
       <div className="scanlines" />
-      
-      <Desktop onIconDoubleClick={openWindow} />
-      
-      {windows.map(window => (
-        !window.minimized && (
-          <Window
-            key={window.id}
-            id={window.id}
-            title={window.title}
-            x={window.x}
-            y={window.y}
-            width={window.width}
-            height={window.height}
-            zIndex={window.zIndex}
-            onClose={() => closeWindow(window.id)}
-            onMinimize={() => minimizeWindow(window.id)}
-            onFocus={() => bringToFront(window.id)}
-            onMove={(x, y) => updateWindowPosition(window.id, x, y)}
-          >
-            {renderWindowContent(window.type)}
-          </Window>
-        )
+      <div className="grain" />
+
+      <Desktop
+        onIconDoubleClick={openWindow}
+        wallpapers={WALLPAPERS}
+        currentWallpaper={wallpaper}
+        onWallpaperChange={setWallpaper}
+      />
+
+      {windows.map(win => !win.minimized && (
+        <Window
+          key={win.id}
+          id={win.id}
+          title={win.title}
+          x={win.x} y={win.y}
+          width={win.width} height={win.height}
+          zIndex={win.zIndex}
+          onClose={() => closeWindow(win.id)}
+          onMinimize={() => minimizeWindow(win.id)}
+          onFocus={() => bringToFront(win.id)}
+          onMove={(x, y) => updateWindowPosition(win.id, x, y)}
+        >
+          {renderContent(win.type)}
+        </Window>
       ))}
-      
-      <Taskbar 
-        windows={windows} 
+
+      <Taskbar
+        windows={windows}
         onWindowClick={restoreWindow}
         onStartClick={() => openWindow('about')}
+        onOpenApp={openWindow}
       />
     </div>
   );

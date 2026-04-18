@@ -69,9 +69,14 @@
   background: linear-gradient(135deg, #ee3300 0%, #cc1100 100%);
 }
 
-.window-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+.window-button.maximize {
+  color: #001a33;
+}
+
+.window.maximized {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .window-content {

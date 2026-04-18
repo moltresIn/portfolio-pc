@@ -27,6 +27,8 @@ const HELP_TEXT = [
   '  projects   - Open Projects window',
   '  skills     - Open Skills window',
   '  contact    - Open Contact window',
+  '  snake      - Play Snake',
+  '  notepad    - Open Notepad',
   '  open <app> - Open any app by name',
   '  whoami     - Display current user info',
   '  neofetch   - System information',
@@ -115,9 +117,19 @@ const Terminal = ({ onCommand }) => {
         onCommand('contact');
         break;
 
+      case 'snake':
+        output = push('Loading Snake.exe...');
+        onCommand('snake');
+        break;
+
+      case 'notepad':
+        output = push('Opening Notepad.exe...');
+        onCommand('notepad');
+        break;
+
       case 'open': {
         const app = parts[1];
-        const valid = ['about', 'projects', 'skills', 'contact', 'terminal'];
+        const valid = ['about', 'projects', 'skills', 'contact', 'terminal', 'snake', 'notepad'];
         if (valid.includes(app)) {
           output = push(`Opening ${app}...`);
           onCommand(app);
@@ -125,7 +137,7 @@ const Terminal = ({ onCommand }) => {
           output = push(
             app
               ? `'${app}' is not a recognized program.`
-              : 'Usage: open <about|projects|skills|contact|terminal>',
+              : 'Usage: open <about|projects|skills|contact|terminal|snake|notepad>',
           );
         }
         break;
