@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DesktopIcon from './DesktopIcon';
 import './Desktop.css';
+
+const MENU_ITEMS = [
+  { label: '💻 Open Terminal', action: 'terminal' },
+  { label: '👤 About Me', action: 'about' },
+  { separator: true },
+  { label: '📁 Projects', action: 'projects' },
+  { label: '📄 Skills', action: 'skills' },
+  { label: '📧 Contact', action: 'contact' },
+];
 
 const Desktop = ({ onIconDoubleClick }) => {
   const icons = [
@@ -11,8 +20,31 @@ const Desktop = ({ onIconDoubleClick }) => {
     { id: 'terminal', label: 'Terminal', icon: '💻', type: 'terminal' }
   ];
 
+  const [contextMenu, setContextMenu] = useState(null);
+  const menuRef = useRef(null);
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    setContextMenu({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMenuClick = (action) => {
+    onIconDoubleClick(action);
+    setContextMenu(null);
+  };
+
+  useEffect(() => {
+    const close = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setContextMenu(null);
+      }
+    };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, []);
+
   return (
-    <div className="desktop">
+    <div className="desktop" onContextMenu={handleContextMenu}>
       <div className="desktop-icons">
         {icons.map((icon, index) => (
           <DesktopIcon
@@ -24,6 +56,22 @@ const Desktop = ({ onIconDoubleClick }) => {
           />
         ))}
       </div>
+
+      {contextMenu && (
+        <ul
+          ref={menuRef}
+          className="context-menu"
+          style={{ top: contextMenu.y, left: contextMenu.x }}
+        >
+          {MENU_ITEMS.map((item, i) =>
+            item.separator
+              ? <li key={i} className="context-menu-separator" />
+              : <li key={i} className="context-menu-item" onClick={() => handleMenuClick(item.action)}>
+                  {item.label}
+                </li>
+          )}
+        </ul>
+      )}
     </div>
   );
 };

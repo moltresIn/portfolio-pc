@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './DesktopIcon.css';
 
 const DesktopIcon = ({ label, icon, onDoubleClick, style }) => {
-  const [clicks, setClicks] = useState(0);
   const [selected, setSelected] = useState(false);
+  const containerRef = useRef(null);
 
-  const handleClick = () => {
-    setSelected(true);
-    setClicks(prev => prev + 1);
-    
-    setTimeout(() => {
-      if (clicks === 0) {
-        setTimeout(() => setClicks(0), 300);
-      } else {
-        onDoubleClick();
-        setClicks(0);
+  // Deselect when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
         setSelected(false);
       }
-    }, 250);
-  };
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div 
+    <div
+      ref={containerRef}
       className={`desktop-icon ${selected ? 'selected' : ''}`}
-      onClick={handleClick}
+      onClick={() => setSelected(true)}
+      onDoubleClick={() => {
+        setSelected(false);
+        onDoubleClick();
+      }}
       style={style}
     >
       <div className="icon-image">{icon}</div>
