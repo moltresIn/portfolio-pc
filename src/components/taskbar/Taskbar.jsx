@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Taskbar.css';
 
-// ─── Web Audio helpers ────────────────────────────────────────────────────────
 const audioCtx = () => new (window.AudioContext || window.webkitAudioContext)();
 
 const playTone = (freq1, freq2, duration, gainLevel) => {
@@ -94,13 +93,11 @@ const Taskbar = ({ windows, onWindowClick, onStartClick, onOpenApp }) => {
     else handleVolumeChange(prevVolumeRef.current || 80);
   };
 
-  // ── Network ──
   const handleNetworkClick = () => {
     playNetworkSound();
     setShowNetwork(v => !v);
   };
 
-  // ── Calendar nav ──
   const prevMonth = () => setCalDate(({ year, month }) =>
     month === 0 ? { year: year - 1, month: 11 } : { year, month: month - 1 });
   const nextMonth = () => setCalDate(({ year, month }) =>

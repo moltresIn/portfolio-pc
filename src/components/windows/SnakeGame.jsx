@@ -3,13 +3,13 @@ import './SnakeGame.css';
 
 const COLS = 20;
 const ROWS = 18;
-const CELL = 22; // px per cell
+const CELL = 22;
 const W = COLS * CELL;
 const H = ROWS * CELL;
 
-const SPEED_START = 220; // ms per tick
+const SPEED_START = 220; 
 const SPEED_MIN   = 80;
-const SPEED_STEP  = 8;   // ms faster per food eaten
+const SPEED_STEP  = 8;  
 
 const rand = (max) => Math.floor(Math.random() * max);
 const newFood = (snake) => {
@@ -22,13 +22,9 @@ const newFood = (snake) => {
 const INIT_SNAKE = [{ x: 10, y: 9 }, { x: 9, y: 9 }, { x: 8, y: 9 }];
 const INIT_DIR   = { x: 1, y: 0 };
 
-// Draw the whole scene onto the canvas
 const draw = (ctx, snake, food, status) => {
-  // Background
   ctx.fillStyle = '#000d1a';
   ctx.fillRect(0, 0, W, H);
-
-  // Grid dots
   ctx.fillStyle = 'rgba(0, 212, 255, 0.04)';
   for (let x = 0; x < COLS; x++) {
     for (let y = 0; y < ROWS; y++) {
@@ -36,7 +32,6 @@ const draw = (ctx, snake, food, status) => {
     }
   }
 
-  // Food — glowing circle
   const fx = food.x * CELL + CELL / 2;
   const fy = food.y * CELL + CELL / 2;
   const foodGlow = ctx.createRadialGradient(fx, fy, 1, fx, fy, CELL * 0.45);
@@ -52,11 +47,9 @@ const draw = (ctx, snake, food, status) => {
   ctx.fill();
 
   if (snake.length === 0) return;
-
-  // Snake body — draw tail to head so head is on top
   for (let i = snake.length - 1; i >= 0; i--) {
     const seg = snake[i];
-    const t = i / (snake.length - 1 || 1); // 0 = head, 1 = tail
+    const t = i / (snake.length - 1 || 1);
     const alpha = 1 - t * 0.55;
     const r = Math.round(0   + t * 0);
     const g = Math.round(136 - t * 60);
@@ -71,8 +64,6 @@ const draw = (ctx, snake, food, status) => {
     ctx.beginPath();
     ctx.roundRect(px + pad, py + pad, CELL - pad * 2, CELL - pad * 2, radius);
     ctx.fill();
-
-    // Subtle inner highlight on body
     if (i > 0) {
       ctx.fillStyle = `rgba(255,255,255,0.06)`;
       ctx.beginPath();
@@ -81,13 +72,11 @@ const draw = (ctx, snake, food, status) => {
     }
   }
 
-  // Head — brighter with eyes
   const head = snake[0];
   const hx = head.x * CELL;
   const hy = head.y * CELL;
   const pad = 1;
 
-  // Head glow
   ctx.shadowColor = '#00d4ff';
   ctx.shadowBlur = 12;
   ctx.fillStyle = '#00d4ff';
@@ -96,7 +85,6 @@ const draw = (ctx, snake, food, status) => {
   ctx.fill();
   ctx.shadowBlur = 0;
 
-  // Eyes — positioned based on direction
   const dir = snake.length > 1
     ? { x: snake[0].x - snake[1].x, y: snake[0].y - snake[1].y }
     : INIT_DIR;
@@ -118,7 +106,6 @@ const draw = (ctx, snake, food, status) => {
     ctx.arc(e.x, e.y, eyeR, 0, Math.PI * 2);
     ctx.fill();
   });
-  // Eye shine
   ctx.fillStyle = 'rgba(255,255,255,0.8)';
   [eye1, eye2].forEach(e => {
     ctx.beginPath();
@@ -141,7 +128,6 @@ const SnakeGame = () => {
   const [status, setStatus] = useState('idle');
   const [speed, setSpeed]   = useState(SPEED_START);
 
-  // Redraw canvas whenever snake/food changes
   const redraw = useCallback(() => {
     const ctx = canvasRef.current?.getContext('2d');
     if (!ctx) return;
@@ -178,12 +164,10 @@ const SnakeGame = () => {
           return next;
         });
 
-        // Speed up
         const newSpeed = Math.max(SPEED_MIN, speedRef.current - SPEED_STEP);
         if (newSpeed !== speedRef.current) {
           speedRef.current = newSpeed;
           setSpeed(newSpeed);
-          // Restart interval at new speed
           startInterval();
         }
       }
@@ -207,13 +191,10 @@ const SnakeGame = () => {
     startInterval();
   }, [redraw, startInterval]);
 
-  // Initial draw
   useEffect(() => { redraw(); }, [redraw]);
 
-  // Cleanup on unmount
   useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
-  // Keyboard
   useEffect(() => {
     const onKey = (e) => {
       const map = {
@@ -247,7 +228,6 @@ const SnakeGame = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, [reset, startInterval]);
 
-  // Level display
   const level = Math.floor((SPEED_START - speed) / SPEED_STEP) + 1;
 
   return (

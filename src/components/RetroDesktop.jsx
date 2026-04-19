@@ -36,9 +36,6 @@ const RetroDesktop = () => {
   const [nextZIndex, setNextZIndex] = useState(100);
   const [wallpaper, setWallpaper] = useState(WALLPAPERS[0]);
 
-  useEffect(() => {
-    // Boot duration is driven by BootSequence via onComplete
-  }, []);
 
   const openWindow = (type) => {
     const existing = windows.find(w => w.type === type);

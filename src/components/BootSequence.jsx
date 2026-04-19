@@ -41,7 +41,6 @@ const BootSequence = ({ onComplete }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          // Signal completion after a short pause so user sees 100%
           setTimeout(() => onComplete?.(), 300);
           return 100;
         }

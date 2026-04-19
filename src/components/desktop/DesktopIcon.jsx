@@ -5,7 +5,6 @@ const DesktopIcon = ({ label, icon, onDoubleClick, style }) => {
   const [selected, setSelected] = useState(false);
   const containerRef = useRef(null);
 
-  // Deselect when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {

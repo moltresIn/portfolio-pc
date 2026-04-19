@@ -29,7 +29,7 @@ const Window = ({ title, children, x, y, width, height, zIndex, onClose, onMinim
 
   const handleTitlebarMouseDown = (e) => {
     if (e.target.closest('.window-button')) return;
-    if (maximized) return; // don't drag when maximized
+    if (maximized) return;
     isDragging.current = true;
     dragOffset.current = { x: e.clientX - position.x, y: e.clientY - position.y };
     onFocus();
@@ -40,7 +40,6 @@ const Window = ({ title, children, x, y, width, height, zIndex, onClose, onMinim
   const handleMaximize = (e) => {
     e.stopPropagation();
     if (!maximized) {
-      // store current position before maximizing (for future restore-to-position use)
     }
     setMaximized(m => !m);
     onFocus();
