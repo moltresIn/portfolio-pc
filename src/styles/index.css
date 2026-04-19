@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Global design tokens ───────────────────────────────────────────────────── */
+:root {
+  --neon:        #00d4ff;
+  --neon-dim:    #0088cc;
+  --neon-deep:   #0055aa;
+  --navy-dark:   #003366;
+  --navy-bg:     #000a1a;
+  --navy-mid:    #001433;
+  --navy-panel:  #0a1628;
+  --chrome:      #c8dce8;
+  --chrome-light:#d8eef8;
+  --chrome-border:#7aaabf;
+  --chrome-inset:#e0f0ff;
+  --text-dark:   #001a33;
+  --text-mid:    #a0d8ef;
+  --text-dim:    #5a8aaa;
+}

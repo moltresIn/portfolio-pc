@@ -8,16 +8,18 @@ const AboutWindow = () => {
         <div className="about-avatar">👨‍💻</div>
         <div className="about-title">
           <h1>Kishor Arjunan</h1>
-          <h2>Full-Stack Software Developer</h2>
+          <h2>Senior Software Engineer</h2>
         </div>
       </div>
 
       <div className="about-section">
         <h3>Bio</h3>
         <p>
-          Full-stack software developer with experience building scalable, real-time web applications 
-          and owning features end-to-end. Strong in React, Node.js, Express, and MongoDB/MySQL, with a 
-          focus on performance, clean architecture, and production deployments across multiple cloud platforms.
+          Senior Software Engineer based in Erode, Tamil Nadu, India. Currently leading technical 
+          operations at Aracreate India, with hands-on responsibility for software architecture, 
+          system design, and end-to-end development workflows. Specialises in building scalable, 
+          high-performance applications with a strong focus on clean architecture and modern 
+          development practices.
         </p>
       </div>
 

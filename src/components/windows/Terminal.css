@@ -1,6 +1,6 @@
 .terminal {
   background: #000d1a;
-  color: #00d4ff;
+  color: var(--neon);
   font-family: 'Courier New', monospace;
   font-size: 18px;
   padding: 16px;
@@ -26,7 +26,7 @@
 }
 
 .terminal-line.output {
-  color: #00d4ff;
+  color: var(--neon);
 }
 
 .prompt {
@@ -59,11 +59,11 @@
 }
 
 .terminal::-webkit-scrollbar-thumb {
-  background: #0055aa;
+  background: var(--neon-deep);
   border: 2px solid #000d1a;
-  box-shadow: 0 0 8px #00d4ff;
+  box-shadow: 0 0 8px var(--neon);
 }
 
 .terminal::-webkit-scrollbar-thumb:hover {
-  background: #0088cc;
+  background: var(--neon-dim);
 }

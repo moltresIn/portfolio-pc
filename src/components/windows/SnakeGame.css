@@ -14,13 +14,13 @@
   width: 100%;
   font-family: 'Press Start 2P', monospace;
   font-size: 11px;
-  color: #00d4ff;
-  text-shadow: 0 0 8px #00d4ff;
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon);
 }
 
 .snake-canvas-wrap {
   position: relative;
-  border: 2px solid #0055aa;
+  border: 2px solid var(--neon-deep);
   box-shadow: 0 0 24px rgba(0, 212, 255, 0.3);
   line-height: 0;
 }
@@ -43,8 +43,8 @@
 .snake-msg {
   font-family: 'Press Start 2P', monospace;
   font-size: 18px;
-  color: #00d4ff;
-  text-shadow: 0 0 20px #00d4ff;
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon);
 }
 
 .snake-score {

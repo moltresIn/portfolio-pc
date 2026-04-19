@@ -10,7 +10,7 @@
   gap: 20px;
   padding: 20px;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
-  border: 2px solid #7aaabf;
+  border: 2px solid var(--chrome-border);
   border-radius: 4px;
   margin-bottom: 20px;
 }
@@ -24,7 +24,7 @@
   margin: 0;
   font-family: 'Press Start 2P', monospace;
   font-size: 20px;
-  color: #001a33;
+  color: var(--text-dark);
   text-shadow: 1px 1px 0 rgba(0, 212, 255, 0.2);
 }
 
@@ -38,7 +38,7 @@
 .about-section {
   margin-bottom: 20px;
   padding: 16px;
-  border: 2px inset #7aaabf;
+  border: 2px inset var(--chrome-border);
   background: rgba(240, 248, 255, 0.9);
 }
 
@@ -46,14 +46,14 @@
   margin: 0 0 12px 0;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  color: #003366;
+  color: var(--navy-dark);
   text-decoration: underline;
 }
 
 .about-section p {
   margin: 0;
   line-height: 1.6;
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .expertise-list {
@@ -64,8 +64,8 @@
 
 .expertise-list li {
   padding: 8px 0;
-  border-bottom: 1px dotted #7aaabf;
-  color: #001a33;
+  border-bottom: 1px dotted var(--chrome-border);
+  color: var(--text-dark);
 }
 
 .expertise-list li:last-child {
@@ -80,8 +80,8 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 12px;
-  background: #c8dce8;
-  border: 2px inset #e0f0ff;
+  background: var(--chrome);
+  border: 2px inset var(--chrome-inset);
   font-size: 18px;
-  color: #001a33;
+  color: var(--text-dark);
 }

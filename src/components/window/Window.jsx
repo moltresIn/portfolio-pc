@@ -8,7 +8,6 @@ const Window = ({ title, children, x, y, width, height, zIndex, onClose, onMinim
   const [maximized, setMaximized] = useState(false);
   const isDragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
-  const preMaximize = useRef({ x, y, width, height });
 
   useEffect(() => {
     if (!maximized) setPosition({ x, y });
@@ -41,7 +40,7 @@ const Window = ({ title, children, x, y, width, height, zIndex, onClose, onMinim
   const handleMaximize = (e) => {
     e.stopPropagation();
     if (!maximized) {
-      preMaximize.current = { x: position.x, y: position.y, width, height };
+      // store current position before maximizing (for future restore-to-position use)
     }
     setMaximized(m => !m);
     onFocus();

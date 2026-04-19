@@ -10,7 +10,7 @@
 }
 
 .window-titlebar {
-  background: linear-gradient(90deg, #003366 0%, #0055aa 100%);
+  background: linear-gradient(90deg, var(--navy-dark) 0%, var(--neon-deep) 100%);
   color: #e8f4ff;
   padding: 4px 6px;
   display: flex;
@@ -18,7 +18,7 @@
   align-items: center;
   cursor: move;
   user-select: none;
-  border-bottom: 1px solid #0088cc;
+  border-bottom: 1px solid var(--neon-dim);
   box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
 }
 
@@ -38,7 +38,7 @@
   width: 26px;
   height: 24px;
   background: #c0d8e8;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
   color: #000;
   font-size: 18px;
   font-weight: bold;
@@ -51,12 +51,12 @@
 }
 
 .window-button:hover:not(:disabled) {
-  background: #d8eef8;
+  background: var(--chrome-light);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
 }
 
 .window-button:active:not(:disabled) {
-  border: 2px inset #e0f0ff;
+  border: 2px inset var(--chrome-inset);
   transform: translateY(1px);
 }
 
@@ -70,7 +70,7 @@
 }
 
 .window-button.maximize {
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .window.maximized {
@@ -86,7 +86,7 @@
   background: #f0f8ff;
   font-family: 'VT323', monospace;
   font-size: 20px;
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .window-content::-webkit-scrollbar {
@@ -96,11 +96,11 @@
 
 .window-content::-webkit-scrollbar-thumb {
   background: #5a9abf;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
 }
 
 .window-content::-webkit-scrollbar-button {
   height: 16px;
   background: #c0d8e8;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
 }

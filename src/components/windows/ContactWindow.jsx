@@ -1,36 +1,25 @@
 import React, { useState } from 'react';
 import './ContactWindow.css';
 
-// Replace with your Formspree form ID from https://formspree.io
-const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
-
 const ContactWindow = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  };
+  const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const subject = encodeURIComponent(`Message from ${formData.name}`);
+  const body = encodeURIComponent(
+    `Name: ${formData.name}\n` +
+    `Email: ${formData.email}\n\n` +
+    `Message:\n${formData.message}`
+  );
+
+  window.location.href = `mailto:akishor2001@gmail.com?subject=${subject}&body=${body}`;
+};
 
   const contactInfo = [
     { icon: '📧', label: 'Email', value: 'akishor2001@gmail.com', href: 'mailto:akishor2001@gmail.com' },
@@ -57,21 +46,6 @@ const ContactWindow = () => {
 
       <div className="contact-form-section">
         <h3>Send a Message</h3>
-
-        {status === 'success' && (
-          <div className="success-message">
-            <div className="success-icon">✓</div>
-            <div className="success-text">Message sent! I'll get back to you soon.</div>
-          </div>
-        )}
-
-        {status === 'error' && (
-          <div className="error-message">
-            ⚠ Something went wrong. Try emailing directly at akishor2001@gmail.com
-          </div>
-        )}
-
-        {(status === 'idle' || status === 'sending' || status === 'error') && (
           <form onSubmit={handleSubmit} className="contact-form">
             <div className="form-group">
               <label>Name:</label>
@@ -85,11 +59,9 @@ const ContactWindow = () => {
               <label>Message:</label>
               <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" className="form-textarea" />
             </div>
-            <button type="submit" className="submit-button" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
+            <button type="submit" className="submit-button">
             </button>
           </form>
-        )}
       </div>
     </div>
   );

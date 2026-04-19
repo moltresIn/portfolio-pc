@@ -153,8 +153,10 @@ const Terminal = ({ onCommand }) => {
           '  Skills.txt',
           '  Contact.app',
           '  Terminal.exe',
+          '  Snake.exe',
+          '  Notepad.exe',
           '',
-          '5 File(s)     42,069 bytes',
+          '7 File(s)     42,069 bytes',
         );
         break;
 

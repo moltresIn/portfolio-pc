@@ -1,6 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import './SkillsWindow.css';
 
+const SKILLS = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'React & React Native', level: 95 },
+      { name: 'Hooks & Redux/Zustand', level: 90 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'UI/UX Optimization', level: 85 }
+    ]
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'Node.js & Express.js', level: 90 },
+      { name: 'REST APIs', level: 90 },
+      { name: 'Authentication', level: 85 }
+    ]
+  },
+  {
+    category: 'Database',
+    items: [
+      { name: 'MongoDB', level: 85 },
+      { name: 'MySQL', level: 85 }
+    ]
+  },
+  {
+    category: 'Real-Time',
+    items: [
+      { name: 'WebSockets (Socket.io)', level: 85 },
+      { name: 'Server-Sent Events', level: 80 }
+    ]
+  },
+  {
+    category: 'DevOps & Cloud',
+    items: [
+      { name: 'Docker & Kubernetes', level: 80 },
+      { name: 'CI/CD & Nginx', level: 80 },
+      { name: 'Cloud-Agnostic Deployments', level: 75 }
+    ]
+  },
+  {
+    category: 'Architecture',
+    items: [
+      { name: 'Modular/Micro-Frontends', level: 85 },
+      { name: 'Serverless', level: 75 },
+      { name: 'Clean Code Principles', level: 90 }
+    ]
+  }
+];
+
 const SkillsWindow = () => {
   const [animated, setAnimated] = useState(false);
 
@@ -8,55 +58,6 @@ const SkillsWindow = () => {
     const t = setTimeout(() => setAnimated(true), 100);
     return () => clearTimeout(t);
   }, []);
-  const skills = [
-    {
-      category: 'Frontend',
-      items: [
-        { name: 'React & React Native', level: 95 },
-        { name: 'Hooks & Redux/Zustand', level: 90 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'UI/UX Optimization', level: 85 }
-      ]
-    },
-    {
-      category: 'Backend',
-      items: [
-        { name: 'Node.js & Express.js', level: 90 },
-        { name: 'REST APIs', level: 90 },
-        { name: 'Authentication', level: 85 }
-      ]
-    },
-    {
-      category: 'Database',
-      items: [
-        { name: 'MongoDB', level: 85 },
-        { name: 'MySQL', level: 85 }
-      ]
-    },
-    {
-      category: 'Real-Time',
-      items: [
-        { name: 'WebSockets (Socket.io)', level: 85 },
-        { name: 'Server-Sent Events', level: 80 }
-      ]
-    },
-    {
-      category: 'DevOps & Cloud',
-      items: [
-        { name: 'Docker & Kubernetes', level: 80 },
-        { name: 'CI/CD & Nginx', level: 80 },
-        { name: 'Cloud-Agnostic Deployments', level: 75 }
-      ]
-    },
-    {
-      category: 'Architecture',
-      items: [
-        { name: 'Modular/Micro-Frontends', level: 85 },
-        { name: 'Serverless', level: 75 },
-        { name: 'Clean Code Principles', level: 90 }
-      ]
-    }
-  ];
 
   return (
     <div className="skills-window">
@@ -80,7 +81,7 @@ const SkillsWindow = () => {
           `}</pre>
         </div>
 
-        {skills.map((skillGroup, idx) => (
+        {SKILLS.map((skillGroup, idx) => (
           <div key={idx} className="skill-group">
             <h3 className="skill-category">{skillGroup.category}</h3>
             <div className="skill-divider">{'='.repeat(50)}</div>

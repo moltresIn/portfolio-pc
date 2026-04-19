@@ -4,8 +4,8 @@
   left: 0;
   width: 100%;
   height: 48px;
-  background: linear-gradient(180deg, #c8dce8 0%, #a8c4d8 100%);
-  border-top: 2px solid #e0f0ff;
+  background: linear-gradient(180deg, var(--chrome) 0%, #a8c4d8 100%);
+  border-top: 2px solid var(--chrome-inset);
   display: flex;
   align-items: center;
   padding: 0 4px;
@@ -23,8 +23,8 @@
 .start-button {
   height: 38px;
   padding: 0 12px;
-  background: linear-gradient(135deg, #003366 0%, #0055aa 100%);
-  border: 2px outset #e0f0ff;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--neon-deep) 100%);
+  border: 2px outset var(--chrome-inset);
   color: #e8f4ff;
   font-family: 'VT323', monospace;
   font-size: 22px;
@@ -43,12 +43,12 @@
 }
 
 .start-button:active {
-  border: 2px inset #e0f0ff;
+  border: 2px inset var(--chrome-inset);
 }
 
 .start-logo {
   font-size: 24px;
-  text-shadow: 0 0 10px #00d4ff;
+  text-shadow: 0 0 10px var(--neon);
 }
 
 .start-menu {
@@ -56,8 +56,8 @@
   bottom: 48px;
   left: 0;
   width: 280px;
-  background: #c8dce8;
-  border: 2px outset #e0f0ff;
+  background: var(--chrome);
+  border: 2px outset var(--chrome-inset);
   box-shadow:
     2px -2px 4px rgba(0, 0, 0, 0.3),
     0 0 25px rgba(0, 212, 255, 0.3);
@@ -65,24 +65,24 @@
 }
 
 .start-menu-header {
-  background: linear-gradient(90deg, #003366 0%, #0055aa 100%);
+  background: linear-gradient(90deg, var(--navy-dark) 0%, var(--neon-deep) 100%);
   padding: 12px;
   color: #e8f4ff;
-  border-bottom: 1px solid #0088cc;
+  border-bottom: 1px solid var(--neon-dim);
 }
 
 .start-menu-title {
   font-family: 'Press Start 2P', monospace;
   font-size: 12px;
   margin-bottom: 6px;
-  text-shadow: 0 0 8px #00d4ff;
+  text-shadow: 0 0 8px var(--neon);
 }
 
 .start-menu-subtitle {
   font-family: 'VT323', monospace;
   font-size: 18px;
   opacity: 0.85;
-  color: #a0d8ef;
+  color: var(--text-mid);
 }
 
 .start-menu-items {
@@ -94,22 +94,22 @@
   font-family: 'VT323', monospace;
   font-size: 20px;
   cursor: pointer;
-  color: #001a33;
+  color: var(--text-dark);
   transition: all 0.15s;
   border-radius: 2px;
 }
 
 .start-menu-item:hover {
-  background: linear-gradient(90deg, #003366 0%, #0055aa 100%);
+  background: linear-gradient(90deg, var(--navy-dark) 0%, var(--neon-deep) 100%);
   color: #e8f4ff;
   text-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
 }
 
 .start-menu-separator {
   height: 1px;
-  background: #7aaabf;
+  background: var(--chrome-border);
   margin: 4px 8px;
-  border-top: 1px solid #e0f0ff;
+  border-top: 1px solid var(--chrome-inset);
 }
 
 .taskbar-windows {
@@ -129,11 +129,11 @@
   min-width: 160px;
   max-width: 200px;
   padding: 0 12px;
-  background: #c8dce8;
-  border: 2px outset #e0f0ff;
+  background: var(--chrome);
+  border: 2px outset var(--chrome-inset);
   font-family: 'VT323', monospace;
   font-size: 18px;
-  color: #001a33;
+  color: var(--text-dark);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -142,12 +142,12 @@
 }
 
 .taskbar-window:hover {
-  background: #d8eef8;
+  background: var(--chrome-light);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
 }
 
 .taskbar-window.active {
-  border: 2px inset #e0f0ff;
+  border: 2px inset var(--chrome-inset);
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 102, 255, 0.15) 100%);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
@@ -157,7 +157,7 @@
   align-items: center;
   gap: 8px;
   padding: 0 8px;
-  border-left: 1px solid #7aaabf;
+  border-left: 1px solid var(--chrome-border);
   height: 38px;
 }
 
@@ -177,16 +177,260 @@
   transform: scale(1.2);
 }
 
+/* Volume popup */
+.volume-container {
+  position: relative;
+}
+
+.volume-popup {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy-panel);
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  padding: 12px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 64px;
+  z-index: 20000;
+  animation: slide-up 0.15s ease-out;
+}
+
+.volume-label {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--neon);
+  text-shadow: 0 0 6px var(--neon);
+}
+
+.volume-slider-wrap {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  appearance: slider-vertical;
+  -webkit-appearance: slider-vertical;
+  width: 6px;
+  height: 90px;
+  cursor: pointer;
+  accent-color: var(--neon);
+  background: var(--text-dark);
+}
+
+.volume-mute-btn {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid var(--neon-deep);
+  color: var(--text-mid);
+  cursor: pointer;
+  padding: 3px 6px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.volume-mute-btn:hover {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--neon);
+  border-color: var(--neon);
+}
+
 .clock {
   font-family: 'VT323', monospace;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  color: #001a33;
-  padding: 4px 8px;
-  border: 2px inset #e0f0ff;
+  color: var(--text-dark);
+  padding: 3px 8px;
+  border: 2px inset var(--chrome-inset);
   background: rgba(255, 255, 255, 0.6);
   min-width: 90px;
   text-align: center;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: background 0.15s;
+}
+
+.clock:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.clock-date {
+  font-size: 14px;
+  color: #3a6a8a;
+}
+
+.clock-container {
+  position: relative;
+}
+
+/* ── Shared popup base ── */
+.tray-popup-container {
+  position: relative;
+}
+
+.tray-popup {
+  position: absolute;
+  bottom: 52px;
+  right: 0;
+  background: var(--navy-panel);
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.25);
+  z-index: 20000;
+  animation: slide-up 0.15s ease-out;
+  font-family: 'VT323', monospace;
+}
+
+.tray-popup-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--neon);
+  text-shadow: 0 0 6px var(--neon);
+  padding: 10px 12px 6px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  margin-bottom: 6px;
+}
+
+/* ── Network popup ── */
+.network-popup {
+  width: 220px;
+  padding-bottom: 10px;
+}
+
+.network-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  font-size: 18px;
+  color: var(--text-mid);
+}
+
+.network-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #444;
+  flex-shrink: 0;
+}
+
+.network-dot.connected {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.network-status {
+  margin-left: auto;
+  color: #22c55e;
+  font-size: 17px;
+}
+
+.network-status.off {
+  color: var(--text-dim);
+}
+
+.network-ping {
+  padding: 4px 12px 0;
+  font-size: 16px;
+  color: #3a6a8a;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  margin-top: 6px;
+}
+
+/* ── Calendar popup ── */
+.calendar-popup {
+  width: 280px;
+  right: 0;
+  padding: 12px;
+}
+
+.calendar-today {
+  font-size: 16px;
+  color: var(--text-mid);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.calendar-time {
+  font-size: 26px;
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cal-month-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--neon);
+}
+
+.cal-nav-btn {
+  background: transparent;
+  border: 1px solid var(--neon-deep);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  padding: 2px 8px;
+  transition: all 0.15s;
+}
+
+.cal-nav-btn:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--neon);
+  color: var(--neon);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-header {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #3a6a8a;
+  text-align: center;
+  padding: 3px 0;
+}
+
+.cal-cell {
+  font-size: 17px;
+  color: var(--text-mid);
+  text-align: center;
+  padding: 3px 0;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.cal-cell.empty {
+  color: transparent;
+}
+
+.cal-cell.today {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--neon);
+  text-shadow: 0 0 6px var(--neon);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 3px;
 }
 
 @keyframes slide-up {

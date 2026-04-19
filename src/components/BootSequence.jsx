@@ -18,16 +18,14 @@ const BIOS_LINES = [
   'Loading Portfolio OS 98...',
 ];
 
-const BootSequence = () => {
+const BootSequence = ({ onComplete }) => {
   const [visibleLines, setVisibleLines] = useState([]);
-  const [stage, setStage] = useState(0); // 0 = bios, 1 = loading
+  const [stage, setStage] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  // Typewriter: reveal one BIOS line every 180ms
   useEffect(() => {
     if (stage !== 0) return;
     if (visibleLines.length >= BIOS_LINES.length) {
-      // All lines shown — switch to loading screen after short pause
       const t = setTimeout(() => setStage(1), 400);
       return () => clearTimeout(t);
     }
@@ -37,17 +35,21 @@ const BootSequence = () => {
     return () => clearTimeout(t);
   }, [visibleLines, stage]);
 
-  // Progress bar fills over ~2.5s once loading screen appears
   useEffect(() => {
     if (stage !== 1) return;
     const interval = setInterval(() => {
       setProgress(prev => {
-        if (prev >= 100) { clearInterval(interval); return 100; }
+        if (prev >= 100) {
+          clearInterval(interval);
+          // Signal completion after a short pause so user sees 100%
+          setTimeout(() => onComplete?.(), 300);
+          return 100;
+        }
         return prev + 2;
       });
     }, 50);
     return () => clearInterval(interval);
-  }, [stage]);
+  }, [stage, onComplete]);
 
   return (
     <div className="boot-sequence">

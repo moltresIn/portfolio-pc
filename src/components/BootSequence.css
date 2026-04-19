@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Courier New', monospace;
-  color: #00d4ff;
+  color: var(--neon);
 }
 
 .bios-screen {
@@ -20,8 +20,8 @@
 .bios-text {
   font-size: 18px;
   line-height: 1.8;
-  color: #00d4ff;
-  text-shadow: 0 0 10px #00d4ff;
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon);
 }
 
 .bios-line {
@@ -30,9 +30,9 @@
 
 .bios-cursor {
   display: inline-block;
-  color: #00d4ff;
+  color: var(--neon);
   animation: blink 0.7s infinite;
-  text-shadow: 0 0 10px #00d4ff;
+  text-shadow: 0 0 10px var(--neon);
 }
 
 .loading-screen {
@@ -43,9 +43,9 @@
 .loading-logo {
   font-family: 'Press Start 2P', monospace;
   font-size: 32px;
-  color: #00d4ff;
+  color: var(--neon);
   text-shadow:
-    0 0 20px #00d4ff,
+    0 0 20px var(--neon),
     0 0 40px #0066ff,
     0 0 60px #00aaff;
   margin-bottom: 60px;
@@ -55,8 +55,8 @@
 .loading-bar-container {
   width: 400px;
   height: 30px;
-  background: #001433;
-  border: 2px solid #00d4ff;
+  background: var(--navy-mid);
+  border: 2px solid var(--neon);
   margin: 0 auto 20px;
   position: relative;
   box-shadow:
@@ -66,14 +66,14 @@
 
 .loading-bar {
   height: 100%;
-  background: linear-gradient(90deg, #0066ff 0%, #00d4ff 50%, #00aaff 100%);
+  background: linear-gradient(90deg, #0066ff 0%, var(--neon) 50%, #00aaff 100%);
   transition: width 0.3s;
-  box-shadow: 0 0 20px #00d4ff;
+  box-shadow: 0 0 20px var(--neon);
   animation: pulse-glow 1s infinite;
 }
 
 .loading-text {
-  color: #a0d8ef;
+  color: var(--text-mid);
   font-size: 20px;
   font-family: 'VT323', monospace;
   animation: blink 1s infinite;
@@ -97,20 +97,20 @@
 @keyframes neon-flicker {
   0%, 100% {
     text-shadow:
-      0 0 20px #00d4ff,
+      0 0 20px var(--neon),
       0 0 40px #0066ff,
       0 0 60px #00aaff;
   }
   50% {
     text-shadow:
-      0 0 10px #00d4ff,
+      0 0 10px var(--neon),
       0 0 20px #0066ff,
       0 0 30px #00aaff;
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px #00d4ff; }
+  0%, 100% { box-shadow: 0 0 20px var(--neon); }
   50% { box-shadow: 0 0 35px #0066ff; }
 }
 

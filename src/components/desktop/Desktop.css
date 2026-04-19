@@ -13,8 +13,8 @@
 
 .context-menu {
   position: fixed;
-  background: #0a1628;
-  border: 1px solid #00d4ff;
+  background: var(--navy-panel);
+  border: 1px solid var(--neon);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.25), 2px 2px 0 rgba(0,0,0,0.5);
   list-style: none;
   margin: 0;
@@ -28,7 +28,7 @@
 .context-menu-item {
   padding: 7px 16px;
   cursor: pointer;
-  color: #a0d8ef;
+  color: var(--text-mid);
   white-space: nowrap;
   transition: all 0.1s;
   position: relative;
@@ -36,13 +36,13 @@
 
 .context-menu-item:hover {
   background: rgba(0, 212, 255, 0.15);
-  color: #00d4ff;
-  text-shadow: 0 0 8px #00d4ff;
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon);
 }
 
 .context-menu-item.active {
-  color: #00d4ff;
-  text-shadow: 0 0 6px #00d4ff;
+  color: var(--neon);
+  text-shadow: 0 0 6px var(--neon);
 }
 
 .context-menu-separator {
@@ -59,8 +59,8 @@
   position: absolute;
   left: 100%;
   top: 0;
-  background: #0a1628;
-  border: 1px solid #00d4ff;
+  background: var(--navy-panel);
+  border: 1px solid var(--neon);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
   list-style: none;
   margin: 0;

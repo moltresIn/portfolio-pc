@@ -10,6 +10,7 @@ import SkillsWindow from './windows/SkillsWindow';
 import ContactWindow from './windows/ContactWindow';
 import SnakeGame from './windows/SnakeGame';
 import Notepad from './windows/Notepad';
+import ErrorBoundary from './ErrorBoundary';
 import './RetroDesktop.css';
 
 const WALLPAPERS = [
@@ -36,8 +37,7 @@ const RetroDesktop = () => {
   const [wallpaper, setWallpaper] = useState(WALLPAPERS[0]);
 
   useEffect(() => {
-    const t = setTimeout(() => setBooting(false), 4000);
-    return () => clearTimeout(t);
+    // Boot duration is driven by BootSequence via onComplete
   }, []);
 
   const openWindow = (type) => {
@@ -94,7 +94,7 @@ const RetroDesktop = () => {
     ? { backgroundImage: `url(${wallpaper.value})`, backgroundSize: 'cover', backgroundPosition: 'center' }
     : { background: wallpaper.color };
 
-  if (booting) return <BootSequence />;
+  if (booting) return <BootSequence onComplete={() => setBooting(false)} />;
 
   return (
     <div className="retro-desktop-container" style={bgStyle}>
@@ -129,7 +129,9 @@ const RetroDesktop = () => {
           onFocus={() => bringToFront(win.id)}
           onMove={(x, y) => updateWindowPosition(win.id, x, y)}
         >
-          {renderContent(win.type)}
+          <ErrorBoundary>
+            {renderContent(win.type)}
+          </ErrorBoundary>
         </Window>
       ))}
 

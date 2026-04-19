@@ -10,20 +10,20 @@
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background: #c8dce8;
-  border-bottom: 1px solid #7aaabf;
+  background: var(--chrome);
+  border-bottom: 1px solid var(--chrome-border);
 }
 
 .notepad-menu-item {
   font-family: 'VT323', monospace;
   font-size: 20px;
-  color: #001a33;
+  color: var(--text-dark);
   padding: 2px 10px;
   cursor: pointer;
 }
 
 .notepad-menu-item:hover {
-  background: #003366;
+  background: var(--navy-dark);
   color: #e8f4ff;
 }
 
@@ -31,7 +31,7 @@
   margin-left: auto;
   font-family: 'VT323', monospace;
   font-size: 18px;
-  color: #5a8aaa;
+  color: var(--text-dim);
 }
 
 .notepad-area {
@@ -42,15 +42,15 @@
   padding: 12px;
   font-family: 'Courier New', monospace;
   font-size: 16px;
-  color: #001a33;
+  color: var(--text-dark);
   background: #f8fcff;
   line-height: 1.7;
 }
 
 .notepad-footer {
   padding: 4px 12px;
-  background: #c8dce8;
-  border-top: 1px solid #7aaabf;
+  background: var(--chrome);
+  border-top: 1px solid var(--chrome-border);
   font-family: 'VT323', monospace;
   font-size: 17px;
   color: #3a6a8a;

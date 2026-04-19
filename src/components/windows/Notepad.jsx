@@ -39,7 +39,7 @@ const Notepad = () => {
         autoFocus
       />
       <div className="notepad-footer">
-        Ln {text.slice(0, text.length).split('\n').length} · {text.length} chars · Ctrl+S to save
+        Ln {text.split('\n').length} · {text.length} chars · Ctrl+S to save
       </div>
     </div>
   );

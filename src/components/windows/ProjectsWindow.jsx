@@ -1,87 +1,87 @@
 import React, { useState } from 'react';
 import './ProjectsWindow.css';
 
+const PROJECTS = [
+  {
+    id: 1,
+    name: 'AI People Detection System',
+    icon: '🤖',
+    description: 'An AI-driven real-time people detection system with live analytics dashboard',
+    tech: ['React', 'Node.js', 'Python', 'TensorFlow', 'WebSockets', 'Computer Vision'],
+    features: [
+      'Real-time video processing and detection',
+      'Live analytics dashboard with React frontend',
+      'Optimized backend for high-performance inference',
+      'WebSocket integration for instant updates',
+      'Scalable architecture for multiple camera feeds'
+    ],
+    status: 'Completed',
+    github: 'https://github.com/moltresIn',
+    live: null,
+  },
+  {
+    id: 2,
+    name: 'Social Media Platform',
+    icon: '📱',
+    description: 'A full-featured social media platform supporting 5,000+ active users',
+    tech: ['React Native', 'Node.js', 'Express.js', 'MySQL', 'Redis', 'JWT'],
+    features: [
+      'Cross-platform mobile app (iOS & Android)',
+      'API response time improved by ~40%',
+      'Secure authentication and authorization',
+      'Real-time notifications and updates',
+      'Scalable database architecture',
+      'Image upload and processing pipeline'
+    ],
+    status: 'Completed',
+    github: 'https://github.com/moltresIn',
+    live: null,
+  },
+  {
+    id: 3,
+    name: 'Micro-Frontend Architecture',
+    icon: '🏗️',
+    description: 'Implemented modular frontend architecture for improved scalability',
+    tech: ['React', 'Module Federation', 'Webpack', 'Docker', 'Kubernetes', 'CI/CD'],
+    features: [
+      'Independent feature development and deployment',
+      'Shared component library across micro-apps',
+      'Improved build times and team productivity',
+      'Isolated testing environments',
+      'Zero-downtime deployments'
+    ],
+    status: 'Completed',
+    github: 'https://github.com/moltresIn',
+    live: null,
+  },
+  {
+    id: 4,
+    name: 'Real-Time Messaging System',
+    icon: '💬',
+    description: 'Secure real-time messaging platform with end-to-end encryption',
+    tech: ['Node.js', 'Socket.io', 'MongoDB', 'Redis', 'JWT', 'Encryption'],
+    features: [
+      'Real-time bidirectional communication',
+      'Message encryption and secure authentication',
+      'Typing indicators and read receipts',
+      'File sharing capabilities',
+      'Scalable message queue system',
+      'Production-ready deployment'
+    ],
+    status: 'Completed',
+    github: 'https://github.com/moltresIn',
+    live: null,
+  }
+];
+
 const ProjectsWindow = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const projects = [
-    {
-      id: 1,
-      name: 'AI People Detection System',
-      icon: '🤖',
-      description: 'An AI-driven real-time people detection system with live analytics dashboard',
-      tech: ['React', 'Node.js', 'Python', 'TensorFlow', 'WebSockets', 'Computer Vision'],
-      features: [
-        'Real-time video processing and detection',
-        'Live analytics dashboard with React frontend',
-        'Optimized backend for high-performance inference',
-        'WebSocket integration for instant updates',
-        'Scalable architecture for multiple camera feeds'
-      ],
-      status: 'Completed',
-      github: 'https://github.com/moltresIn',
-      live: null,
-    },
-    {
-      id: 2,
-      name: 'Social Media Platform',
-      icon: '📱',
-      description: 'A full-featured social media platform supporting 5,000+ active users',
-      tech: ['React Native', 'Node.js', 'Express.js', 'MySQL', 'Redis', 'JWT'],
-      features: [
-        'Cross-platform mobile app (iOS & Android)',
-        'API response time improved by ~40%',
-        'Secure authentication and authorization',
-        'Real-time notifications and updates',
-        'Scalable database architecture',
-        'Image upload and processing pipeline'
-      ],
-      status: 'Completed',
-      github: 'https://github.com/moltresIn',
-      live: null,
-    },
-    {
-      id: 3,
-      name: 'Micro-Frontend Architecture',
-      icon: '🏗️',
-      description: 'Implemented modular frontend architecture for improved scalability',
-      tech: ['React', 'Module Federation', 'Webpack', 'Docker', 'Kubernetes', 'CI/CD'],
-      features: [
-        'Independent feature development and deployment',
-        'Shared component library across micro-apps',
-        'Improved build times and team productivity',
-        'Isolated testing environments',
-        'Zero-downtime deployments'
-      ],
-      status: 'Completed',
-      github: 'https://github.com/moltresIn',
-      live: null,
-    },
-    {
-      id: 4,
-      name: 'Real-Time Messaging System',
-      icon: '💬',
-      description: 'Secure real-time messaging platform with end-to-end encryption',
-      tech: ['Node.js', 'Socket.io', 'MongoDB', 'Redis', 'JWT', 'Encryption'],
-      features: [
-        'Real-time bidirectional communication',
-        'Message encryption and secure authentication',
-        'Typing indicators and read receipts',
-        'File sharing capabilities',
-        'Scalable message queue system',
-        'Production-ready deployment'
-      ],
-      status: 'Completed',
-      github: 'https://github.com/moltresIn',
-      live: null,
-    }
-  ];
 
   return (
     <div className="projects-window">
       <div className="projects-sidebar">
         <div className="sidebar-title">MY PROJECTS</div>
-        {projects.map(project => (
+        {PROJECTS.map(project => (
           <div
             key={project.id}
             className={`project-item ${selectedProject?.id === project.id ? 'selected' : ''}`}

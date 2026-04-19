@@ -5,8 +5,8 @@
 
 .projects-sidebar {
   width: 200px;
-  background: #c8dce8;
-  border-right: 2px solid #7aaabf;
+  background: var(--chrome);
+  border-right: 2px solid var(--chrome-border);
   padding: 8px;
   flex-shrink: 0;
 }
@@ -15,8 +15,8 @@
   font-family: 'Press Start 2P', monospace;
   font-size: 10px;
   padding: 12px 8px;
-  color: #001a33;
-  border-bottom: 1px solid #7aaabf;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--chrome-border);
   margin-bottom: 8px;
 }
 
@@ -29,7 +29,7 @@
   border: 2px solid transparent;
   margin-bottom: 4px;
   transition: all 0.2s;
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .project-item:hover {
@@ -38,9 +38,9 @@
 }
 
 .project-item.selected {
-  background: linear-gradient(90deg, #003366 0%, #0055aa 100%);
+  background: linear-gradient(90deg, var(--navy-dark) 0%, var(--neon-deep) 100%);
   color: #e8f4ff;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
 }
 
@@ -71,7 +71,7 @@
   margin-bottom: 24px;
   padding: 16px;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
-  border: 2px solid #7aaabf;
+  border: 2px solid var(--chrome-border);
 }
 
 .project-icon-large {
@@ -83,7 +83,7 @@
   margin: 0 0 8px 0;
   font-family: 'VT323', monospace;
   font-size: 28px;
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .status-badge {
@@ -92,7 +92,7 @@
   background: #22c55e;
   color: #fff;
   font-size: 16px;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
   font-family: 'VT323', monospace;
 }
 
@@ -103,7 +103,7 @@
 .project-section {
   margin-bottom: 20px;
   padding: 16px;
-  border: 2px inset #7aaabf;
+  border: 2px inset var(--chrome-border);
   background: rgba(255, 255, 255, 0.8);
 }
 
@@ -111,14 +111,14 @@
   margin: 0 0 12px 0;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  color: #003366;
+  color: var(--navy-dark);
   text-decoration: underline;
 }
 
 .project-section p {
   margin: 0;
   line-height: 1.6;
-  color: #001a33;
+  color: var(--text-dark);
 }
 
 .tech-tags {
@@ -129,9 +129,9 @@
 
 .tech-tag {
   padding: 6px 12px;
-  background: linear-gradient(135deg, #0055aa 0%, #0088cc 100%);
+  background: linear-gradient(135deg, var(--neon-deep) 0%, var(--neon-dim) 100%);
   color: #e8f4ff;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
   font-size: 16px;
   font-family: 'VT323', monospace;
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
@@ -147,8 +147,8 @@
   padding: 8px 0;
   padding-left: 24px;
   position: relative;
-  border-bottom: 1px dotted #7aaabf;
-  color: #001a33;
+  border-bottom: 1px dotted var(--chrome-border);
+  color: var(--text-dark);
 }
 
 .features-list li:last-child {
@@ -159,7 +159,7 @@
   content: '▶';
   position: absolute;
   left: 0;
-  color: #0088cc;
+  color: var(--neon-dim);
 }
 
 .project-placeholder {
@@ -168,7 +168,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #5a8aaa;
+  color: var(--text-dim);
 }
 
 .placeholder-icon {
@@ -192,26 +192,26 @@
   padding: 10px 20px;
   font-family: 'VT323', monospace;
   font-size: 20px;
-  border: 2px outset #e0f0ff;
+  border: 2px outset var(--chrome-inset);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .github-link {
-  background: linear-gradient(135deg, #001a33 0%, #003366 100%);
-  color: #a0d8ef;
+  background: linear-gradient(135deg, var(--text-dark) 0%, var(--navy-dark) 100%);
+  color: var(--text-mid);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
 }
 
 .github-link:hover {
   box-shadow: 0 0 18px rgba(0, 212, 255, 0.45);
   transform: translateY(-2px);
-  color: #00d4ff;
+  color: var(--neon);
 }
 
 .live-link {
-  background: linear-gradient(135deg, #0055aa 0%, #0088cc 100%);
+  background: linear-gradient(135deg, var(--neon-deep) 0%, var(--neon-dim) 100%);
   color: #e8f4ff;
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
 }
